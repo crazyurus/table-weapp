@@ -1,12 +1,12 @@
 .table-course {
 	position: absolute;
-	top: 128rpx;
-	left: 64rpx;
+	top: 64px;
+	left: 32px;
 	height: calc(100% - 64px);
 	width: calc(140% - 48px);
 }
 .table-course .table-body {
-	height: calc(100% - 52px);
+	height: calc(100% - 50px);
 }
 .table-time-blank {
 	height: 47px;
@@ -14,10 +14,10 @@
 }
 .table-time {
 	position: fixed;
-	top: 128rpx;
+	top: 64px;
 	left: 0;
-	width: 64rpx;
-	height: calc(100% - 128rpx);
+	width: 32px;
+	height: calc(100% - 64px);
 	background: #fff;
 	z-index: 99;
 }
@@ -55,7 +55,7 @@
 	color: #fff;
 	font-weight: normal;
 }
-.table-head > view > text {
+.table-head view text {
 	margin: 0;
 	line-height: 1.6;
 }

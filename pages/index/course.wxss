@@ -17,5 +17,5 @@
 
 .course-divide {
 	margin: 0;
-	line-height: 4px !important;
+	height: 4px;
 }

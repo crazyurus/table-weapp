@@ -25,12 +25,35 @@
   </view>
   <view class="table-body">
     <view wx:for="{{computed.renderCourseList(course, week, start)}}" wx:for-index="index" wx:for-item="line">
-      <view wx:for="{{line}}" wx:for-index="day" wx:for-item="item" class="table-item {{item.length === 0 ? 'table-item-invalid' : 'table-item-' + (item[0].valid ? day + 1 : 'invalid')}}">
+      <view wx:for="{{line}}" wx:for-index="day" wx:for-item="item" class="table-item {{item.length === 0 ? 'table-item-invalid' : 'table-item-' + (item[0].valid ? day + 1 : 'invalid')}}" bindtap="showCourseDetail" data-course="{{item}}">
         <text>{{item[0].name}}</text> 
         <text>{{item[0].classroom}}</text>
       </view>
     </view>
   </view>
 </scroll-view>
+
+<view class="layui-m-layer" hidden="{{!current.name}}">
+  <view class="layui-m-layershade" bindtap="hideCourseDetail"></view>
+    <view class="layui-m-layermain">
+      <view class="layui-m-layersection">
+        <view class="layui-m-layerchild layui-m-anim-scale">
+          <view class="course-name">{{current.name}}</view>
+          <view class="layui-m-layercont">
+          <view class="course-title">授课教师</view> 
+          <view class="course-content">{{current.teacher.name}}</view> 
+          <view class="course-divide"></view> 
+          <view class="course-title">授课时间</view> 
+          <view class="course-content">第{{current.time.start}}-{{current.time.end}}{{current.time.odd}}周</view> 
+          <view class="course-divide"></view> 
+          <view class="course-title">建议反馈</view> 
+          <view class="course-content">Token团队</view> 
+          <view class="course-divide"></view> 
+          <view class="course-footer">{{current.classroom}}</view>
+        </view>
+      </view> 
+    </view>
+  </view>
+</view>
 
 <wxs module="computed" src="./computed.wxs"></wxs>
