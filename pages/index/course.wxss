@@ -1,0 +1,21 @@
+.course-title {
+	font-size: 14px;
+	color: #bbb;
+	margin: 8px 0;
+}
+
+.course-content, .course-footer {
+	font-size: 17px;
+	color: #000;
+	margin: 8px 0;
+}
+
+.course-footer {
+	text-align: center;
+	margin: 32px 8px -4px;
+}
+
+.course-divide {
+	margin: 0;
+	line-height: 4px !important;
+}

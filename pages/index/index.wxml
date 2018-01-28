@@ -1,3 +1,9 @@
+<view class="navbar">
+  <picker value="{{week - 1}}" range="{{computed.renderWeekList()}}" bindchange="bindWeekChange">
+    <text>第{{week}}周</text>
+    <text class="caret"></text>
+  </picker>
+</view>
 <view class="table-time">
   <view class="table-time-blank"></view>
   <view class="table-time-morning">
@@ -9,9 +15,10 @@
   <view class="table-time-evening"><text>晚</text>
   <text>上</text></view>
 </view>
+
 <scroll-view scroll-x="true" class="table-course">
   <view class="table-head table-border">
-    <view wx:for="{{computed.renderWeekList(week, start)}}" class="{{item.current ? 'current' : ''}}">
+    <view wx:for="{{computed.renderDayList(week, start)}}" class="{{item.current ? 'current' : ''}}">
       <text>周{{item.week}}</text>
       <text>{{item.day}}日</text>
     </view>

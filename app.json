@@ -3,9 +3,8 @@
     "pages/index/index"
   ],
   "window":{
-    "backgroundTextStyle":"light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle":"black"
+    "navigationBarTitleText": "课程表",
+    "navigationBarTextStyle":"white",
+    "navigationStyle": "custom"
   }
 }

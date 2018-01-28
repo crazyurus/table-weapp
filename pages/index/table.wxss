@@ -1,0 +1,113 @@
+.table-course {
+	position: absolute;
+	top: 128rpx;
+	left: 64rpx;
+	height: calc(100% - 64px);
+	width: calc(140% - 48px);
+}
+.table-course .table-body {
+	height: calc(100% - 52px);
+}
+.table-time-blank {
+	height: 47px;
+	position: relative;
+}
+.table-time {
+	position: fixed;
+	top: 128rpx;
+	left: 0;
+	width: 64rpx;
+	height: calc(100% - 128rpx);
+	background: #fff;
+	z-index: 99;
+}
+.table-time-morning, .table-time-afternoon {
+	height: calc(40% - 18.8px);
+}
+.table-time-evening {
+	height: calc(20% - 9.4px);
+}
+.table-time > view {
+	display: flex;
+	align-items: center;
+	text-align: center;
+	flex-direction: column;
+	justify-content: center;
+}
+.table-head > view, .table-time {
+	font-weight: 300;
+	padding: 0;
+	font-size: 13px;
+}
+.table-head {
+	display: flex;
+}
+.table-head > view {
+	padding: 3px 0;
+	height: 40px;
+	display: flex;
+	width: 14.28%;
+	flex-direction: column;
+	text-align: center;
+}
+.table-head > view.current {
+	background: #45c8dc;
+	color: #fff;
+	font-weight: normal;
+}
+.table-head > view > text {
+	margin: 0;
+	line-height: 1.6;
+}
+.table-body {
+	display: flex;
+	flex-direction: column;
+}
+.table-body > view {
+	height: 20%;
+	display: flex;
+	margin: 0 0 4px;
+}
+.table-item {
+	width: 14.28%;
+	margin: 2px 1px;
+	height: calc(100% - 4px);
+	color: #fff;
+	border-radius: 4px;
+	font-size: 13px;
+	padding: 5px 5px 1px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	cursor: pointer;
+}
+.table-item-1 {
+	background-color: rgb(69,200,220);
+}
+.table-item-2 {
+	background-color: rgb(167,213,154);
+}
+.table-item-3 {
+	background-color: rgb(252,171,83);
+}
+.table-item-4 {
+	background-color: rgb(140,136,255);
+}
+.table-item-5 {
+	background-color: rgb(80,210,194);
+}
+.table-item-6 {
+	background-color: rgb(255,51,102);
+}
+.table-item-7 {
+	background-color: rgb(0,185,255);
+}
+.table-item-null, .table-item-invalid {
+	background-color: rgb(242,244,244);
+}
+.table-item-invalid {
+	color: #666;
+}
+.table-border {
+	border-bottom: 1px solid rgb(230,230,230);
+}

@@ -1,4 +1,4 @@
-module.exports.renderWeekList = function (_current, _start) {
+module.exports.renderDayList = function (_current, _start) {
   var week_arr = ['一', '二', '三', '四', '五', '六', '日'];
   var start = getDate(_start).getTime();
   var length = 7 * (_current - 1);
@@ -56,4 +56,12 @@ module.exports.renderCourseList = function (_course, _current, _start) {
     course[item.period.section - 1][item.period.week - 1].push(item);
   });
   return course;
+}
+
+module.exports.renderWeekList = function() {
+  var week_arr = [];
+  for (var i = 1; i < 25; ++i) {
+    week_arr.push('第' + i + '周');
+  }
+  return week_arr;
 }
