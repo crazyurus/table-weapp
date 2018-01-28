@@ -11,33 +11,9 @@
 </view>
 <scroll-view scroll-x="true" class="table-course">
   <view class="table-head table-border">
-    <view>
-      <text>周一</text>
-      <text>22日</text>
-    </view>
-    <view>
-      <text>周一</text>
-      <text>22日</text>
-    </view>
-    <view>
-      <text>周一</text>
-      <text>22日</text>
-    </view>
-    <view>
-      <text>周一</text>
-      <text>22日</text>
-    </view>
-    <view>
-      <text>周一</text>
-      <text>22日</text>
-    </view>
-    <view>
-      <text>周一</text>
-      <text>22日</text>
-    </view>
-    <view>
-      <text>周一</text>
-      <text>22日</text>
+    <view wx:for="{{computed.renderWeekList(week, start)}}" class="{{item.current ? 'current' : ''}}">
+      <text>周{{item.week}}</text>
+      <text>{{item.day}}日</text>
     </view>
   </view>
   <view class="table-body">
