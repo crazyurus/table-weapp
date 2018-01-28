@@ -1,0 +1,113 @@
+<view class="table-time">
+  <view class="table-time-blank"></view>
+  <view class="table-time-morning">
+    <text>上</text> 
+    <text>午</text> 
+  </view>
+  <view class="table-time-afternoon"><text>下</text>
+  <text>午</text></view>
+  <view class="table-time-evening"><text>晚</text>
+  <text>上</text></view>
+</view>
+<scroll-view scroll-x="true" class="table-course">
+  <view class="table-head table-border">
+    <view>
+      <text>周一</text>
+      <text>22日</text>
+    </view>
+    <view>
+      <text>周一</text>
+      <text>22日</text>
+    </view>
+    <view>
+      <text>周一</text>
+      <text>22日</text>
+    </view>
+    <view>
+      <text>周一</text>
+      <text>22日</text>
+    </view>
+    <view>
+      <text>周一</text>
+      <text>22日</text>
+    </view>
+    <view>
+      <text>周一</text>
+      <text>22日</text>
+    </view>
+    <view>
+      <text>周一</text>
+      <text>22日</text>
+    </view>
+  </view>
+  <view class="table-body">
+    <view wx:for="{{renderCourseList(course, week, start)}}" wx:for-index="index" wx:for-item="line">
+      <view wx:for="line" wx:for-index="week" wx:for-item="item" class="table-item table-item-invalid">
+        <text>{{item.name}}</text> 
+        <text>{{item.place}}</text>
+      </view>
+    </view>
+  </view>
+</scroll-view>
+
+<wxs module="computed">
+  module.exports.renderWeekList = function(_course, _week, _start) {
+    const week_arr = ['一', '二', '三', '四', '五', '六', '日'];
+    const start = getDate(_start);
+    const length = 7 * (_current - 1);
+    const current = getDate();
+
+    return week_arr.map(function(item, index) {
+      let day = getDate(start + (length + index) * 24 * 3600 * 1000);
+      return {
+        week: item,
+        day: day.getDate(),
+        current: day.toDateString() === current.toDateString()
+      }
+    });
+  };
+  module.exports.renderCourseList = function() {
+    // 分析是否在当前周
+    let courseList = _course.map(function(item) {
+      let valid = false;
+      if (item.time.start <= _current && _current <= item.time.end) {
+        valid = true;
+        // 单双周判断
+        if (item.time.odd === '单' && _current % 2 === 0) valid = false;
+        else if (item.time.odd === '双' && _current % 2 === 1) valid = false;
+      }
+
+      return {
+        id: item.id,
+        name: item.name,
+        teacher: item.teacher,
+        classroom: item.classroom,
+        time: item.time,
+        period: item.period,
+        valid: valid,
+        origin: item
+      }
+    });
+
+    // 按照valid排序
+    courseList.sort(function(a, b) {
+      if (a.valid === b.valid) return 0;
+      return a.valid ? -1 : 1;
+    });
+
+    // 初始化课程表（5*7）
+    let course = [];
+    for (var i = 0; i < 5; ++i) {
+      course.push([]);
+      for (var j = 0; j < 7; ++j) {
+        course[i].push([]);
+      }
+    }
+
+    // 放入课程列表中
+    courseList.map(function(item) {
+      course[item.period.section - 1][item.period.week - 1].push(item);
+    });
+    return course;
+  }
+</wxs>
