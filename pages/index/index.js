@@ -4,18 +4,20 @@ const data = require('../../mock/student.js').data;
 Page({
   data: {
     course: data.course,
-    week: 21,
+    week: data.week,
     start: data.start,
     current: {}
   },
   bindWeekChange(e) {
     this.setData({
-      week: parseInt(e.detail.value) + 1
+      week: Number.parseInt(e.detail.value) + 1
     });
   },
   showCourseDetail(e) {
     const course = e.currentTarget.dataset.course;
     const self = this;
+
+    if (course.length === 0) return;
 
     if (course.length === 1) {
       self.setData({

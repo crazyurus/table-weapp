@@ -14,15 +14,6 @@ a {
     width: 70% !important;
 }
 
-.layui-m-layerchild .course-name {
-    background: rgb(29, 170, 240);
-    color: #fff;
-    padding: 16px 0;
-    text-align: center;
-    font-size: 16px;
-    border-radius: 5px 5px 0 0;
-}
-
 .layui-m-layercont {
     text-align: left !important;
     padding: 20px 30px !important;

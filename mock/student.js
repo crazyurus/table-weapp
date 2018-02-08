@@ -4,7 +4,7 @@ module.exports = {
   "data": {
     "start": "2017-09-04",
     "term": "2017-2018-1",
-    "week": 21,
+    "week": 22,
     "course": [
       {
         "id": 0,
