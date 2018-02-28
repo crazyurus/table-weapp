@@ -1,12 +1,64 @@
 const app = getApp()
-const data = require('../../mock/student.js').data;
 
 Page({
   data: {
-    course: data.course,
-    week: data.week,
-    start: data.start,
-    current: {}
+    course: [],
+    week: 1,
+    start: '2018-2-26',
+    current: {},
+    login: {
+      sno: '',
+      password: '',
+      show: false
+    }
+  },
+  onLoad() {
+    let sno = wx.getStorageSync('sno');
+    if (sno) this.loadCourseData(sno);
+    else {
+      this.setData({
+        'login.show': true
+      });
+    }
+  },
+  loadCourseData(sno) {
+    app.getApiData('https://web.wutnews.net/table/index/api', {}, sno).then(result => {
+      this.setData({
+        course: result.course,
+        week: result.week,
+        start: result.start 
+      })
+    });
+  },
+  inputSno(e) {
+    this.data.login.sno = e.detail.value;
+  },
+  inputPassword(e) {
+    this.data.login.password = e.detail.value;
+  },
+  loginOne() {
+    this.loginCancel();
+    app.getApiData('https://api.wutnews.net/one/user/login', {
+      sno: this.data.login.sno,
+      password: this.data.login.password,
+      enc: 0
+    }).then(result => {
+      if (result.message) {
+        app.alert({
+          title: '登录失败',
+          content: result.message
+        });
+      }
+      else {
+        wx.setStorageSync('sno', result.X_SNO);
+        this.loadCourseData(result.X_SNO);
+      }
+    });
+  },
+  loginCancel() {
+    this.setData({
+      'login.show': false
+    });
   },
   bindWeekChange(e) {
     this.setData({
