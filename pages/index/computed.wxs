@@ -1,3 +1,10 @@
+module.exports.renderMonth = function (_current, _start) {
+  var start = getDate(_start).getTime();
+  var length = 7 * (_current - 1);
+  var month = getDate(start + length * 24 * 3600 * 1000);
+  return month.getMonth() + 1;
+}
+
 module.exports.renderDayList = function (_current, _start) {
   var week_arr = ['一', '二', '三', '四', '五', '六', '日'];
   var start = getDate(_start).getTime();

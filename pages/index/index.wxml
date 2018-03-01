@@ -5,7 +5,10 @@
   </picker>
 </view>
 <view class="table-time">
-  <view class="table-time-blank"></view>
+  <view class="table-time-blank">
+    <text>{{computed.renderMonth(week, start)}}</text>
+    <text>月</text>
+  </view>
   <view class="table-time-morning">
     <text>上</text> 
     <text>午</text> 
@@ -58,8 +61,8 @@
 
 <modal hidden="{{!login.show}}" title="登录到智慧理工大平台" confirm-text="登录" no-cancel="true" bindconfirm="loginOne" confirm-color="#45c8dc">
   <view>请先登录以验证身份，默认密码为身份证号后6位数字</view>
-  <input type="number" placeholder="学号/职工号" class="first" focus="{{login.show}}" bindblur="inputSno" />
-  <input type="text" password="true" placeholder="密码" bindconfirm="inputPassword" />
+  <input type="number" placeholder="学号/职工号" class="first" focus="{{login.show}}" bindinput="inputSno" />
+  <input type="text" password="true" placeholder="密码" bindinput="inputPassword" />
 </modal>  
 
 <wxs module="computed" src="./computed.wxs"></wxs>
