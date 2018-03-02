@@ -5,10 +5,7 @@
   </picker>
 </view>
 <view class="table-time">
-  <view class="table-time-blank">
-    <text>{{computed.renderMonth(week, start)}}</text>
-    <text>月</text>
-  </view>
+  <view class="table-time-blank"></view>
   <view class="table-time-morning">
     <text>上</text> 
     <text>午</text> 
@@ -23,7 +20,7 @@
   <view class="table-head table-border">
     <view wx:for="{{computed.renderDayList(week, start)}}" class="{{item.current ? 'current' : ''}}">
       <text>周{{item.week}}</text>
-      <text>{{item.day}}日</text>
+      <text>{{item.month}}-{{item.day}}</text>
     </view>
   </view>
   <view class="table-body">
