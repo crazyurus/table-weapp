@@ -26,7 +26,7 @@
     </view>
     <view class="table-body">
       <view wx:for="{{computed.renderCourseList(course, week, start)}}" wx:for-index="index" wx:for-item="line" wx:key="{{index}}">
-        <view wx:for="{{line}}" wx:for-index="day" wx:for-item="item" class="table-item {{item.length === 0 ? 'table-item-invalid' : 'table-item-' + (item[0].valid ? day + 1 : 'invalid')}}" bindtap="showCourseDetail" data-course="{{item}}" wx:key="{{day}}">
+        <view wx:for="{{line}}" wx:for-index="day" wx:for-item="item" class="table-item {{item.length === 0 ? 'table-item-invalid' : 'table-item-' + (item[0].valid ? day + 1 : 'invalid')}} {{item.length > 1 ? 'table-item-multi' : ''}}" bindtap="showCourseDetail" data-course="{{item}}" wx:key="{{day}}">
           <text>{{item[0].name}}</text> 
           <text>{{item[0].classroom}}</text>
         </view>
