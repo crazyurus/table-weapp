@@ -59,10 +59,11 @@ module.exports.renderCourseList = function (_course, _current, _start) {
   return course;
 }
 
-module.exports.renderWeekList = function() {
+module.exports.renderWeekList = function (_current) {
   var week_arr = [];
   for (var i = 1; i < 25; ++i) {
-    week_arr.push('第' + i + '周');
+    var current = _current === i ? '(本周)' : '';
+    week_arr.push('第' + i + '周' + current);
   }
   return week_arr;
 }

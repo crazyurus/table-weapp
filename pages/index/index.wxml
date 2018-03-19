@@ -1,5 +1,5 @@
 <view class="navbar" style="height: {{height}}px">
-  <picker value="{{week - 1}}" range="{{computed.renderWeekList()}}" bindchange="bindWeekChange">
+  <picker value="{{week - 1}}" range="{{computed.renderWeekList(init)}}" bindchange="bindWeekChange">
     <text>第{{week}}周</text>
     <text class="caret"></text>
   </picker>

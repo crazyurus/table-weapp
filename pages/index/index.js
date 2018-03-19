@@ -4,6 +4,7 @@ Page({
   data: {
     course: [],
     week: 1,
+    init: 1,
     start: '2018-2-26',
     current: {},
     login: {
@@ -43,7 +44,8 @@ Page({
     this.setData({
       course: result.course,
       week: result.week,
-      start: result.start
+      start: result.start,
+      init: result.week
     })
   },
   inputSno(e) {
