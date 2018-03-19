@@ -20,6 +20,10 @@ Page({
       height: info.statusBarHeight + 44
     });
 
+    // 读取缓存
+    let cache = wx.getStorageSync('cache');
+    this.showCourseTable(cache);
+
     // 请求课程数据
     let sno = wx.getStorageSync('sno');
     if (sno) this.loadCourseData(sno);
@@ -31,12 +35,16 @@ Page({
   },
   loadCourseData(sno) {
     app.getApiData('https://web.wutnews.net/table/index/api', {}, sno).then(result => {
-      this.setData({
-        course: result.course,
-        week: result.week,
-        start: result.start 
-      })
+      wx.setStorageSync('cache', result);
+      this.showCourseTable(result);
     });
+  },
+  showCourseTable(result) {
+    this.setData({
+      course: result.course,
+      week: result.week,
+      start: result.start
+    })
   },
   inputSno(e) {
     this.data.login.sno = e.detail.value;
