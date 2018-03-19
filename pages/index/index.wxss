@@ -14,3 +14,7 @@ modal input.first {
   margin-top: 20rpx;
   border-bottom: none;
 }
+
+.blur {
+  filter: blur(4px);
+}

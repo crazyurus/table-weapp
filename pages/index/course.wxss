@@ -1,7 +1,7 @@
 .course-title {
-	font-size: 14px;
+	font-size: 15px;
 	color: #bbb;
-	margin: 8px 0;
+	margin: 10px 0;
 }
 
 .course-content, .course-footer {

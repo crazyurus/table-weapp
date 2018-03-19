@@ -1,37 +1,39 @@
-<view class="navbar" style="height: {{height}}px">
-  <picker value="{{week - 1}}" range="{{computed.renderWeekList(init)}}" bindchange="bindWeekChange">
-    <text>第{{week}}周</text>
-    <text class="caret"></text>
-  </picker>
-</view>
-<view class="table-time">
-  <view class="table-time-blank"></view>
-  <view class="table-time-morning">
-    <text>上</text>
-    <text>午</text> 
+<view class="{{current.name ? 'blur' : ''}}">
+  <view class="navbar" style="height: {{height}}px">
+    <picker value="{{week - 1}}" range="{{computed.renderWeekList(init)}}" bindchange="bindWeekChange">
+      <text>第{{week}}周</text>
+      <text class="caret"></text>
+    </picker>
   </view>
-  <view class="table-time-afternoon"><text>下</text>
-  <text>午</text></view>
-  <view class="table-time-evening"><text>晚</text>
-  <text>上</text></view>
-</view>
-
-<scroll-view scroll-x="true" class="table-course">
-  <view class="table-head table-border">
-    <view wx:for="{{computed.renderDayList(week, start)}}" wx:key="{{item.week}}" class="{{item.current ? 'current' : ''}}">
-      <text>周{{item.week}}</text>
-      <text>{{item.month}}-{{item.day}}</text>
+  <view class="table-time">
+    <view class="table-time-blank"></view>
+    <view class="table-time-morning">
+      <text>上</text>
+      <text>午</text> 
     </view>
+    <view class="table-time-afternoon"><text>下</text>
+    <text>午</text></view>
+    <view class="table-time-evening"><text>晚</text>
+    <text>上</text></view>
   </view>
-  <view class="table-body">
-    <view wx:for="{{computed.renderCourseList(course, week, start)}}" wx:for-index="index" wx:for-item="line" wx:key="{{index}}">
-      <view wx:for="{{line}}" wx:for-index="day" wx:for-item="item" class="table-item {{item.length === 0 ? 'table-item-invalid' : 'table-item-' + (item[0].valid ? day + 1 : 'invalid')}}" bindtap="showCourseDetail" data-course="{{item}}" wx:key="{{day}}">
-        <text>{{item[0].name}}</text> 
-        <text>{{item[0].classroom}}</text>
+
+  <scroll-view scroll-x="true" class="table-course">
+    <view class="table-head table-border">
+      <view wx:for="{{computed.renderDayList(week, start)}}" wx:key="{{item.week}}" class="{{item.current ? 'current' : ''}}">
+        <text>周{{item.week}}</text>
+        <text>{{item.month}}-{{item.day}}</text>
       </view>
     </view>
-  </view>
-</scroll-view>
+    <view class="table-body">
+      <view wx:for="{{computed.renderCourseList(course, week, start)}}" wx:for-index="index" wx:for-item="line" wx:key="{{index}}">
+        <view wx:for="{{line}}" wx:for-index="day" wx:for-item="item" class="table-item {{item.length === 0 ? 'table-item-invalid' : 'table-item-' + (item[0].valid ? day + 1 : 'invalid')}}" bindtap="showCourseDetail" data-course="{{item}}" wx:key="{{day}}">
+          <text>{{item[0].name}}</text> 
+          <text>{{item[0].classroom}}</text>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+</view>
 
 <view class="layui-m-layer" hidden="{{!current.name}}">
   <view class="layui-m-layershade" bindtap="hideCourseDetail"></view>

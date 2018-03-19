@@ -16,14 +16,14 @@
 }
 
 .layui-m-layershade {
-    background-color: rgba(0,0,0,.7);
-    pointer-events: auto
+    background-color: rgba(0,0,0,.4);
+    pointer-events: auto;
 }
 
 .layui-m-layermain {
     display: table;
     font-family: Helvetica,arial,sans-serif;
-    pointer-events: none
+    pointer-events: none;
 }
 
 .layui-m-layermain .layui-m-layersection {
