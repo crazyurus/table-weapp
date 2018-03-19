@@ -3,7 +3,6 @@
   background: #45c8dc;
   color: #fff;
   width: 100%;
-  height: 64px;
   text-align: center;
   z-index: 99;
 }

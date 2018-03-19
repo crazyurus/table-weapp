@@ -10,9 +10,17 @@ Page({
       sno: '',
       password: '',
       show: false
-    }
+    },
+    height: 0
   },
   onLoad() {
+    // 计算导航高度
+    let info = wx.getSystemInfoSync();
+    this.setData({
+      height: info.statusBarHeight + 44
+    });
+
+    // 请求课程数据
     let sno = wx.getStorageSync('sno');
     if (sno) this.loadCourseData(sno);
     else {
